@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5008";
+const API_URL = "https://gscoffee-backend.onrender.com";
 
 
 /* =========================================================
