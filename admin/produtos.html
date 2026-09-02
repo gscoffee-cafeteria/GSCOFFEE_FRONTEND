@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GS Coffee | Produtos</title>
+
+    <link rel="stylesheet" href="styles/admin.css">
+
+    <style>
+
+        body {
+            display: block;
+            margin: 0;
+            background: #f6ebdd;
+            color: #3a2014;
+            font-family: Arial, sans-serif;
+        }
+
+
+        .page {
+            width: min(1100px, calc(100% - 30px));
+            margin: 40px auto;
+        }
+
+
+        .topo {
+            margin-bottom: 25px;
+        }
+
+
+        .topo a {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #603319;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+
+        .topo h1 {
+            margin-bottom: 8px;
+        }
+
+
+        .topo p {
+            color: #766255;
+        }
+
+
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow:
+                0 8px 25px rgba(58, 32, 20, 0.08);
+        }
+
+
+        .card h2 {
+            margin-bottom: 20px;
+            color: #603319;
+        }
+
+
+        .form-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(2, 1fr);
+            gap: 18px;
+        }
+
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+
+        .field label {
+            font-weight: bold;
+            color: #5a4030;
+        }
+
+
+        .field input,
+        .field textarea,
+        .field select {
+
+            width: 100%;
+            padding: 12px 14px;
+
+            border:
+                1px solid #cbb69d;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            background: #fff;
+
+            box-sizing: border-box;
+        }
+
+
+        .field textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-weight: normal;
+        }
+
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+
+        .btn-primary {
+            background: #603319;
+            color: #fff;
+        }
+
+
+        .btn-primary:hover {
+            background: #b87945;
+        }
+
+
+        .btn-edit {
+            background: #b87945;
+            color: #fff;
+        }
+
+
+        .btn-delete {
+            background: #a63f35;
+            color: #fff;
+        }
+
+
+        .actions-form {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+
+        .success {
+            color: #34723e;
+        }
+
+
+        .error {
+            color: #b33a3a;
+        }
+
+
+        /* =====================================================
+           LISTA DE PRODUTOS
+           ===================================================== */
+
+        .products-list {
+            display: grid;
+            gap: 15px;
+        }
+
+
+        .product-item {
+            display: grid;
+
+            grid-template-columns:
+                100px 1fr auto;
+
+            gap: 18px;
+
+            align-items: center;
+
+            padding: 16px;
+
+            border:
+                1px solid #e6d4c1;
+
+            border-radius: 14px;
+
+            background: #fffaf5;
+        }
+
+
+        .product-item img {
+            width: 100px;
+            height: 80px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+
+            background: #eee;
+        }
+
+
+        .product-info h3 {
+            margin-top: 0;
+            margin-bottom: 6px;
+        }
+
+
+        .product-info p {
+            margin: 4px 0;
+
+            color: #766255;
+
+            font-size: 14px;
+        }
+
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+        }
+
+
+        /* =====================================================
+           TÍTULO DAS CATEGORIAS
+           ===================================================== */
+
+        .card .categoria-produtos-titulo {
+
+            margin:
+                35px 0 5px;
+
+            padding:
+                14px 20px;
+
+            background:
+                #603319;
+
+            color:
+                #ffffff !important;
+
+            border-radius:
+                10px;
+
+            font-size:
+                20px;
+
+            font-weight:
+                bold;
+
+            text-transform:
+                uppercase;
+
+            line-height:
+                1.2;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+        }
+
+
+        .card .categoria-produtos-titulo span {
+
+            color:
+                #ffffff !important;
+
+            font-size:
+                20px;
+
+            font-weight:
+                bold;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .card .categoria-produtos-titulo:first-child {
+            margin-top: 0;
+        }
+
+
+        /* =====================================================
+   MODAL EXCLUIR PRODUTO
+   ===================================================== */
+
+.modal-excluir {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-excluir.ativo {
+    display: flex;
+}
+
+.modal-excluir-conteudo {
+    width: 360px;
+    max-width: 90%;
+    background: #fff;
+    padding: 28px;
+    border-radius: 14px;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+.modal-excluir-conteudo h3 {
+    margin: 0 0 10px;
+}
+
+.modal-excluir-conteudo p {
+    margin: 0;
+}
+
+.modal-excluir-acoes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.btn-cancelar,
+.btn-confirmar-exclusao {
+    width: auto;
+    padding: 10px 22px;
+}
+
+.btn-cancelar {
+    background: #777;
+    color: #fff;
+}
+
+.btn-cancelar:hover {
+    background: #555;
+}
+
+.btn-confirmar-exclusao {
+    background: #9b2c2c;
+    color: #fff;
+}
+
+.btn-confirmar-exclusao:hover {
+    background: #c0392b;
+}
+
+        /* =====================================================
+           RESPONSIVO
+           ===================================================== */
+
+        @media(max-width: 750px) {
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .field.full {
+                grid-column: auto;
+            }
+
+
+            .product-item {
+                grid-template-columns: 1fr;
+            }
+
+
+            .product-item img {
+                width: 100%;
+                height: 180px;
+            }
+
+
+            .product-actions {
+                flex-direction: row;
+            }
+
+
+            .card .categoria-produtos-titulo {
+                font-size: 18px;
+                padding: 12px 15px;
+            }
+
+
+            .card .categoria-produtos-titulo span {
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="page">
+
+
+        <div class="topo">
+
+            <a href="dashboard.html">
+                ← Voltar para o painel
+            </a>
+
+
+            <h1>
+                Gerenciar produtos
+            </h1>
+
+
+            <p>
+                Cadastre, edite e remova os produtos da GS Coffee.
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             CADASTRAR / EDITAR PRODUTO
+             ===================================================== -->
+
+        <section class="card">
+
+
+            <h2 id="form-title">
+                Cadastrar produto
+            </h2>
+
+
+            <form id="produtoForm">
+
+
+                <input
+                    type="hidden"
+                    id="produtoId"
+                >
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label for="nome">
+                            Nome
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="preco">
+                            Preço
+                        </label>
+
+                        <input
+                            type="number"
+                            id="preco"
+                            step="0.01"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label for="descricao">
+                            Descrição
+                        </label>
+
+                        <textarea
+                            id="descricao"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="estoque">
+                            Estoque
+                        </label>
+
+                        <input
+                            type="number"
+                            id="estoque"
+                            min="0"
+                            value="0"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="categoria_id">
+                            Categoria
+                        </label>
+
+                        <select
+                            id="categoria_id"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- ================= IMAGEM ================= -->
+
+                    <div class="field full">
+
+                        <label for="imagemArquivo">
+                            Imagem do produto
+                        </label>
+
+
+                        <input
+                            type="file"
+                            id="imagemArquivo"
+                            accept="image/jpeg,image/png,image/webp"
+                        >
+
+
+                        <input
+                            type="hidden"
+                            id="imagem"
+                        >
+
+
+                        <div
+                            id="imagemPreview"
+                            style="
+                                margin-top: 10px;
+                                display: none;
+                            "
+                        >
+
+                            <img
+                                id="imagemPreviewImg"
+                                src=""
+                                alt="Prévia do produto"
+                                style="
+                                    width: 180px;
+                                    height: 140px;
+                                    object-fit: cover;
+                                    border-radius: 10px;
+                                "
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ================= DISPONIBILIDADE ================= -->
+
+                    <div class="field full">
+
+
+                        <label>
+                            Disponibilidade
+                        </label>
+
+
+                        <div class="checkbox-group">
+
+
+                            <label>
+
+                                <input
+                                    type="checkbox"
+                                    id="disponivel"
+                                    checked
+                                >
+
+                                Disponível
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="checkbox"
+                                    id="retirada"
+                                    checked
+                                >
+
+                                Retirada
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="checkbox"
+                                    id="balcao"
+                                >
+
+                                Balcão
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="checkbox"
+                                    id="maisPedidos"
+                                >
+
+                                Exibir nos Mais Pedidos
+
+                            </label>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ================= BOTÕES ================= -->
+
+                <div class="actions-form">
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="salvarProduto"
+                    >
+                        Salvar produto
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn"
+                        id="cancelarEdicao"
+                        style="display:none;"
+                    >
+                        Cancelar edição
+                    </button>
+
+
+                </div>
+
+
+                <p
+                    id="produtoMessage"
+                    class="message"
+                ></p>
+
+
+            </form>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PRODUTOS CADASTRADOS
+             ===================================================== -->
+
+        <section class="card">
+
+
+            <h2>
+                Produtos cadastrados
+            </h2>
+
+
+            <div
+                id="productsList"
+                class="products-list"
+            ></div>
+
+
+        </section>
+
+
+    </main>
+
+    <div id="modalExcluirProduto" class="modal-excluir">
+
+    <div class="modal-excluir-conteudo">
+
+        <h3>
+            Excluir produto
+        </h3>
+
+        <p>
+            Tem certeza que deseja excluir este produto?
+        </p>
+
+        <div class="modal-excluir-acoes">
+
+            <button
+                type="button"
+                id="cancelarExclusaoProduto"
+                class="btn btn-cancelar"
+            >
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                id="confirmarExclusaoProduto"
+                class="btn btn-confirmar-exclusao"
+            >
+                Excluir
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <script src="scripts/produtos.js"></script>
+
+
+</body>
+
+</html>

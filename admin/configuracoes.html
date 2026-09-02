@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>GS Coffee | Configurações</title>
+
+    <link rel="stylesheet" href="styles/admin.css">
+
+    <style>
+
+        body {
+            display: block;
+            margin: 0;
+            background: #f6ebdd;
+            color: #3a2014;
+            font-family: Arial, sans-serif;
+        }
+
+        .config-page {
+            width: min(1000px, calc(100% - 30px));
+            margin: 40px auto;
+        }
+
+        .config-header {
+            margin-bottom: 25px;
+        }
+
+        .config-header a {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: #603319;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .config-header a:hover {
+            text-decoration: underline;
+        }
+
+        .config-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .config-header p {
+            color: #766255;
+        }
+
+        .config-card {
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 18px;
+            background: white;
+            box-shadow:
+                0 8px 25px rgba(58, 32, 20, 0.08);
+        }
+
+        .config-card h2 {
+            margin-bottom: 20px;
+            color: #603319;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        .field label {
+            font-weight: bold;
+            color: #5a4030;
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+
+            width: 100%;
+            padding: 12px 14px;
+            border:
+                1px solid #cbb69d;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #fff;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .field textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+
+            border-color: #a67c52;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(166, 124, 82, 0.15);
+        }
+
+        .save-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .save-button,
+        .contact-add-button {
+
+            padding: 14px 25px;
+            border: none;
+            border-radius: 9px;
+            background: #603319;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .save-button:hover,
+        .contact-add-button:hover {
+            background: #b87945;
+        }
+
+        .save-button:disabled,
+        .contact-add-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #configMessage,
+        #contactMessage {
+            font-size: 14px;
+        }
+
+        .success {
+            color: #34723e;
+        }
+
+        .error {
+            color: #b33a3a;
+        }
+
+        .contact-form {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eadbca;
+        }
+
+        .contacts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            padding: 15px;
+
+            border:
+                1px solid #e2d2c1;
+
+            border-radius: 10px;
+
+            background: #fffaf5;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .contact-info strong {
+            color: #603319;
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .contact-edit,
+        .contact-delete {
+
+            padding: 8px 12px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .contact-edit {
+            background: #c99a6b;
+            color: white;
+        }
+
+        .contact-delete {
+            background: #a33c32;
+            color: white;
+        }
+
+        .contact-empty {
+            color: #766255;
+        }
+
+        /* =====================================================
+   MODAIS DE EXCLUSÃO
+   ===================================================== */
+
+.modal-excluir {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-excluir.ativo {
+    display: flex;
+}
+
+.modal-excluir-conteudo {
+    width: 360px;
+    max-width: 90%;
+    background: #fff;
+    padding: 28px;
+    border-radius: 14px;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+.modal-excluir-conteudo h3 {
+    margin: 0 0 10px;
+}
+
+.modal-excluir-conteudo p {
+    margin: 0;
+}
+
+.modal-excluir-acoes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.btn-cancelar,
+.btn-confirmar-exclusao {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-cancelar {
+    background: #777;
+    color: #fff;
+}
+
+.btn-cancelar:hover {
+    background: #555;
+}
+
+.btn-confirmar-exclusao {
+    background: #9b2c2c;
+    color: #fff;
+}
+
+.btn-confirmar-exclusao:hover {
+    background: #c0392b;
+}
+
+        @media(max-width: 700px) {
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full {
+                grid-column: auto;
+            }
+
+            .config-card {
+                padding: 22px;
+            }
+
+            .contact-item {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="config-page">
+
+
+        <div class="config-header">
+
+            <a href="dashboard.html">
+                ← Voltar para o painel
+            </a>
+
+            <h1>
+                Configurações da cafeteria
+            </h1>
+
+            <p>
+                Altere as informações exibidas
+                no site da GS Coffee.
+            </p>
+
+        </div>
+
+
+        <form id="configForm">
+
+
+            <!-- ================= HERO ================= -->
+
+            <section class="config-card">
+
+                <h2>
+                    Página inicial
+                </h2>
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label for="heroSubtitulo">
+                            Subtítulo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="heroSubtitulo"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="heroTitulo">
+                            Título principal
+                        </label>
+
+                        <input
+                            type="text"
+                            id="heroTitulo"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label for="heroTexto">
+                            Texto principal
+                        </label>
+
+                        <textarea
+                            id="heroTexto"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="heroTipoMidia">
+                            Tipo de mídia
+                        </label>
+                    
+                        <select id="heroTipoMidia">
+                    
+                            <option value="imagem">
+                                Foto
+                            </option>
+                    
+                            <option value="video">
+                                Vídeo
+                            </option>
+                    
+                        </select>
+                    
+                    </div>
+                    
+                    
+                    <div class="field">
+                    
+                        <label for="heroArquivo">
+                            Escolher arquivo
+                        </label>
+                    
+                        <input
+                            type="file"
+                            id="heroArquivo"
+                            accept="image/*,video/*"
+                        >
+                    
+                    </div>
+                    
+                    
+                    <div class="field full">
+                    
+                        <label>
+                            Mídia atual
+                        </label>
+                    
+                        <div
+                            id="heroPreview"
+                            style="
+                                margin-top: 10px;
+                                max-width: 500px;
+                            "
+                        >
+                            <p
+                                id="heroPreviewText"
+                                style="
+                                    color: #766255;
+                                    margin: 0;
+                                "
+                            >
+                                Nenhuma mídia selecionada.
+                            </p>
+                        </div>
+                    
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= CONTATOS ================= -->
+
+            <section class="config-card">
+
+                <h2>
+                    Contatos e redes sociais
+                </h2>
+
+
+                <div class="contact-form">
+
+                    <div class="form-grid">
+
+
+                        <div class="field">
+
+                            <label for="contactTipo">
+                                Tipo
+                            </label>
+
+                            <select id="contactTipo">
+
+                                <option value="telefone">
+                                    Telefone
+                                </option>
+
+                                <option value="whatsapp">
+                                    WhatsApp
+                                </option>
+
+                                <option value="instagram">
+                                    Instagram
+                                </option>
+
+                                <option value="facebook">
+                                    Facebook
+                                </option>
+
+                                <option value="twitter">
+                                    Twitter / X
+                                </option>
+
+                                <option value="tiktok">
+                                    TikTok
+                                </option>
+
+                                <option value="youtube">
+                                    YouTube
+                                </option>
+
+                                <option value="outro">
+                                    Outro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="contactNome">
+                                Nome / identificação
+                            </label>
+
+                            <input
+                                type="text"
+                                id="contactNome"
+                                placeholder="Ex.: Pedidos, Atendimento..."
+                            >
+
+                        </div>
+
+
+                        <div class="field full">
+
+                            <label for="contactValor">
+                                Número, usuário ou link
+                            </label>
+
+                            <input
+                                type="text"
+                                id="contactValor"
+                                placeholder="Digite o contato"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="save-area">
+
+                        <button
+                            type="button"
+                            id="addContactButton"
+                            class="contact-add-button"
+                        >
+                            + Adicionar contato
+                        </button>
+
+                        <p id="contactMessage"></p>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Contatos cadastrados
+                </h3>
+
+                <div
+                    id="contactsList"
+                    class="contacts-list"
+                >
+
+                    <p class="contact-empty">
+                        Nenhum contato cadastrado.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= LOCALIZAÇÃO / HORÁRIOS ================= -->
+
+<section class="config-card">
+
+    <h2>
+        Localização e horários
+    </h2>
+
+
+    <div class="address-form">
+
+        <h3>
+            Endereços da cafeteria
+        </h3>
+
+
+        <div class="form-grid">
+
+
+            <div class="field">
+
+                <label for="addressNome">
+                    Nome / identificação
+                </label>
+
+                <input
+                    type="text"
+                    id="addressNome"
+                    placeholder="Ex.: Unidade Santo André"
+                >
+
+            </div>
+
+
+            <div class="field full">
+
+                <label for="addressValor">
+                    Endereço
+                </label>
+
+                <input
+                    type="text"
+                    id="addressValor"
+                    placeholder="Digite o endereço completo"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="addressHorarioSegSab">
+                    Segunda a sábado
+                </label>
+
+                <input
+                    type="text"
+                    id="addressHorarioSegSab"
+                    placeholder="Ex.: 08:00 às 20:00"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="addressHorarioDomingo">
+                    Domingo
+                </label>
+
+                <input
+                    type="text"
+                    id="addressHorarioDomingo"
+                    placeholder="Ex.: 09:00 às 17:00 ou Fechado"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="addressHorarioFeriado">
+                    Feriados
+                </label>
+
+                <input
+                    type="text"
+                    id="addressHorarioFeriado"
+                    placeholder="Ex.: 09:00 às 14:00 ou Fechado"
+                >
+
+            </div>
+
+
+        </div>
+
+
+        <div class="save-area">
+
+            <button
+                type="button"
+                id="addAddressButton"
+                class="contact-add-button"
+            >
+                + Adicionar endereço
+            </button>
+
+            <p id="addressMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <h3>
+        Endereços cadastrados
+    </h3>
+
+
+    <div
+        id="addressesList"
+        class="contacts-list"
+    >
+
+        <p class="contact-empty">
+            Nenhum endereço cadastrado.
+        </p>
+
+    </div>
+
+
+    <div style="margin-top: 30px;">
+
+        <div class="field">
+
+            <label for="formasPagamento">
+                Formas de pagamento
+            </label>
+
+            <input
+                type="text"
+                id="formasPagamento"
+                placeholder="Ex.: PIX, Cartão e Dinheiro"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+            <div class="save-area">
+
+                <button
+                    type="submit"
+                    id="saveButton"
+                    class="save-button"
+                >
+                    Salvar alterações
+                </button>
+
+
+                <p id="configMessage"></p>
+
+            </div>
+
+
+        </form>
+
+
+    </main>
+
+    <!-- MODAL EXCLUIR CONTATO -->
+
+<div id="modalExcluirContato" class="modal-excluir">
+
+    <div class="modal-excluir-conteudo">
+
+        <h3>Excluir contato</h3>
+
+        <p>
+            Tem certeza que deseja excluir este contato?
+        </p>
+
+        <div class="modal-excluir-acoes">
+
+            <button
+                type="button"
+                id="cancelarExclusaoContato"
+                class="btn-cancelar"
+            >
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                id="confirmarExclusaoContato"
+                class="btn-confirmar-exclusao"
+            >
+                Excluir
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MODAL EXCLUIR ENDEREÇO -->
+
+<div id="modalExcluirEndereco" class="modal-excluir">
+
+    <div class="modal-excluir-conteudo">
+
+        <h3>Excluir endereço</h3>
+
+        <p>
+            Tem certeza que deseja excluir este endereço?
+        </p>
+
+        <div class="modal-excluir-acoes">
+
+            <button
+                type="button"
+                id="cancelarExclusaoEndereco"
+                class="btn-cancelar"
+            >
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                id="confirmarExclusaoEndereco"
+                class="btn-confirmar-exclusao"
+            >
+                Excluir
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="scripts/configuracoes.js"></script>
+
+
+</body>
+
+</html>

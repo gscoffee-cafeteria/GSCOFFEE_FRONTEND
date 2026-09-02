@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GS Coffee | Meu Perfil</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #f6ebdd;
+            color: #3a2014;
+            font-family: Arial, sans-serif;
+        }
+
+        .perfil-page {
+            width: min(900px, calc(100% - 30px));
+            margin: 40px auto;
+        }
+
+        .perfil-topo {
+            margin-bottom: 25px;
+        }
+
+        .perfil-topo a {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #603319;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .perfil-topo h1 {
+            margin: 0 0 8px;
+            color: #3a2014;
+        }
+
+        .perfil-topo p {
+            margin: 0;
+            color: #766255;
+        }
+
+        .perfil-card {
+            background: #fff;
+            padding: 28px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(58, 32, 20, 0.08);
+        }
+
+        .perfil-card h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #603319;
+        }
+
+        .perfil-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .perfil-field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .perfil-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .perfil-field label {
+            font-weight: bold;
+            color: #5a4030;
+        }
+
+        .perfil-field input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 14px;
+            border: 1px solid #cbb69d;
+            border-radius: 8px;
+            background: #fff;
+            color: #3a2014;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .perfil-field input:focus {
+            border-color: #603319;
+        }
+
+        .perfil-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .perfil-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .perfil-btn-primary {
+            background: #603319;
+            color: #fff;
+        }
+
+        .perfil-btn-primary:hover {
+            background: #b87945;
+        }
+
+        .perfil-btn-secondary {
+            background: #b87945;
+            color: #fff;
+        }
+
+        .perfil-btn-logout {
+            background: #a63f35;
+            color: #fff;
+        }
+
+        .perfil-message {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .perfil-success {
+            color: #34723e;
+        }
+
+        .perfil-error {
+            color: #b33a3a;
+        }
+
+        @media (max-width: 650px) {
+
+            .perfil-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .perfil-field.full {
+                grid-column: auto;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="perfil-page">
+
+        <div class="perfil-topo">
+
+            <a href="index.html">
+                ← Voltar para a cafeteria
+            </a>
+
+            <h1>
+                Meu Perfil
+            </h1>
+
+            <p>
+                Gerencie suas informações pessoais e sua conta.
+            </p>
+
+        </div>
+
+
+        <!-- ================================================
+             DADOS PESSOAIS
+             ================================================ -->
+
+        <section class="perfil-card">
+
+            <h2>
+                <i class="bi bi-person-circle"></i>
+                Dados pessoais
+            </h2>
+
+            <form id="perfilForm">
+
+                <div class="perfil-grid">
+
+                    <div class="perfil-field">
+
+                        <label for="perfilNome">
+                            Nome
+                        </label>
+
+                        <input
+                            type="text"
+                            id="perfilNome"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="perfil-field">
+
+                        <label for="perfilEmail">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="perfilEmail"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="perfil-field">
+
+                        <label for="perfilTelefone">
+                            Telefone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="perfilTelefone"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="perfil-field">
+
+    <label
+        for="perfilCpf"
+        id="perfilDocumentoLabel"
+    >
+        CPF
+    </label>
+
+    <input
+        type="text"
+        id="perfilCpf"
+        maxlength="18"
+        placeholder="000.000.000-00"
+        inputmode="numeric"
+        autocomplete="off"
+    >
+
+</div>
+
+
+                    <div
+    class="perfil-field"
+    id="perfilNascimentoContainer"
+>
+
+    <label for="perfilNascimento">
+        Data de nascimento
+    </label>
+
+    <input
+        type="date"
+        id="perfilNascimento"
+    >
+
+</div>
+
+                </div>
+
+
+                <div class="perfil-actions">
+
+                    <button
+                        type="submit"
+                        class="perfil-btn perfil-btn-primary"
+                    >
+                        Salvar alterações
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="perfilMessage"
+                    class="perfil-message"
+                ></p>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================================================
+             ALTERAR SENHA
+             ================================================ -->
+
+        <section class="perfil-card">
+
+            <h2>
+                <i class="bi bi-lock"></i>
+                Alterar senha
+            </h2>
+
+            <form id="senhaForm">
+
+                <div class="perfil-grid">
+
+                    <div class="perfil-field">
+
+                        <label for="senhaAtual">
+                            Senha atual
+                        </label>
+
+                        <input
+                            type="password"
+                            id="senhaAtual"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="perfil-field">
+
+                        <label for="novaSenha">
+                            Nova senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="novaSenha"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="perfil-field">
+
+                        <label for="confirmarNovaSenha">
+                            Confirmar nova senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmarNovaSenha"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="perfil-actions">
+
+                    <button
+                        type="submit"
+                        class="perfil-btn perfil-btn-secondary"
+                    >
+                        Alterar senha
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="senhaMessage"
+                    class="perfil-message"
+                ></p>
+
+            </form>
+
+        </section>
+
+        <!-- ================================================
+     MEUS ENDEREÇOS
+     ================================================ -->
+
+<section class="perfil-card">
+
+    <h2>
+        <i class="bi bi-geo-alt"></i>
+        Meus endereços
+    </h2>
+
+    <div id="listaEnderecos">
+
+        <p>
+            Carregando seus endereços...
+        </p>
+
+    </div>
+
+
+    <div class="perfil-actions">
+
+        <button
+            type="button"
+            id="adicionarEnderecoButton"
+            class="perfil-btn perfil-btn-primary"
+        >
+            + Adicionar endereço
+        </button>
+
+    </div>
+
+
+    <div
+        id="formEnderecoContainer"
+        style="display: none; margin-top: 25px;"
+    >
+
+        <form id="enderecoForm">
+
+            <input
+                type="hidden"
+                id="enderecoId"
+            >
+
+
+            <div class="perfil-grid">
+
+                <div class="perfil-field">
+
+                    <label for="enderecoApelido">
+                        Apelido
+                    </label>
+
+                    <input
+                        type="text"
+                        id="enderecoApelido"
+                        placeholder="Ex: Casa, Trabalho"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="perfil-field">
+
+                    <label for="enderecoCep">
+                        CEP
+                    </label>
+
+                    <input
+                        type="text"
+                        id="enderecoCep"
+                        maxlength="9"
+                        placeholder="00000-000"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="perfil-field full">
+
+                    <label for="enderecoRua">
+                        Rua
+                    </label>
+
+                    <input
+                        type="text"
+                        id="enderecoRua"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="perfil-field">
+
+                    <label for="enderecoNumero">
+                        Número
+                    </label>
+
+                    <input
+                        type="text"
+                        id="enderecoNumero"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="perfil-field">
+
+                    <label for="enderecoBairro">
+                        Bairro
+                    </label>
+
+                    <input
+                        type="text"
+                        id="enderecoBairro"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="perfil-field full">
+
+                    <label for="enderecoComplemento">
+                        Complemento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="enderecoComplemento"
+                        placeholder="Apartamento, bloco, referência..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="perfil-actions">
+
+                <button
+                    type="submit"
+                    class="perfil-btn perfil-btn-primary"
+                >
+                    Salvar endereço
+                </button>
+
+
+                <button
+                    type="button"
+                    id="cancelarEnderecoButton"
+                    class="perfil-btn perfil-btn-secondary"
+                >
+                    Cancelar
+                </button>
+
+            </div>
+
+
+            <p
+                id="enderecoMessage"
+                class="perfil-message"
+            ></p>
+
+        </form>
+
+    </div>
+
+</section>
+
+        <!-- ================================================
+     HISTÓRICO DE PEDIDOS
+     ================================================ -->
+
+<section
+    class="perfil-card"
+    id="meusPedidosContainer"
+>
+
+    <h2>
+        <i class="bi bi-receipt"></i>
+        Meus pedidos
+    </h2>
+
+    <div id="historicoPedidos">
+
+        <p>
+            Carregando seus pedidos...
+        </p>
+
+    </div>
+
+</section>
+
+        <!-- ================================================
+             CONTA
+             ================================================ -->
+
+        <section class="perfil-card">
+
+            <h2>
+                <i class="bi bi-box-arrow-right"></i>
+                Minha conta
+            </h2>
+
+            <p>
+                Deseja sair da sua conta?
+            </p>
+
+            <div class="perfil-actions">
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="perfil-btn perfil-btn-logout"
+                >
+                    Sair da conta
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+<footer
+    id="faleconosco"
+    class="footer-style"
+>
+
+    <section class="footer-style_1 container-grid">
+
+        <article>
+
+            <img
+                id="logo"
+                src="assets/images/logo.png"
+                alt="GS Coffee"
+            >
+
+            <h1>
+                Fale conosco
+            </h1>
+
+            <p>
+                Ficou com alguma dúvida sobre seu pedido?
+                Entre em contato com a nossa equipe.
+            </p>
+
+        </article>
+
+
+        <div>
+
+            <h1>
+                Formas de pagamento
+            </h1>
+
+            <p id="formas-pagamento-texto">
+                PIX, Cartão e Dinheiro
+            </p>
+
+            <img
+                id="formas"
+                src="assets/images/forma-pagamentos 1.png"
+                alt="Formas de pagamento"
+            >
+
+        </div>
+
+    </section>
+
+
+    <section class="footer-style_2 container-grid">
+
+        <article>
+
+            <h1>
+                Contatos
+            </h1>
+
+            <div id="contatos-dinamicos">
+                <p>Carregando contatos...</p>
+            </div>
+
+        </article>
+
+
+        <article class="onde-estamos">
+
+            <h1>
+                Onde estamos
+            </h1>
+
+            <div id="enderecos-dinamicos">
+
+                <p>
+                    Carregando unidades...
+                </p>
+
+            </div>
+
+
+            <div class="mapa-unidade">
+
+                <a
+                    href="https://maps.app.goo.gl/T8367q2CUFWfSJFF7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <iframe
+                        src="https://www.google.com/maps?q=GS%20COFFEE%20CAFETERIA%20Santo%20Andr%C3%A9&output=embed"
+                        width="100%"
+                        height="180"
+                        style="border:0; pointer-events:none;"
+                        loading="lazy"
+                    ></iframe>
+
+                </a>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <section class="footer-style_3">
+
+        <p>
+            &copy; Todos os direitos reservados —
+            GS Coffee 2026
+        </p>
+
+    </section>
+
+</footer>
+
+    <!-- ================================================
+     MODAL AVALIAR PEDIDO
+     ================================================ -->
+
+<div
+    id="avaliacaoModal"
+    style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.45);
+        z-index:9999;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+    "
+>
+
+    <div
+        style="
+            width:min(450px, 100%);
+            background:#fffaf5;
+            border-radius:18px;
+            padding:28px;
+            box-sizing:border-box;
+            box-shadow:0 15px 40px rgba(0,0,0,0.25);
+        "
+    >
+
+        <h2
+            style="
+                margin:0 0 8px;
+                color:#603319;
+            "
+        >
+            Avaliar pedido
+        </h2>
+
+        <p
+            id="avaliacaoPedidoNumero"
+            style="
+                margin:0 0 20px;
+                color:#766255;
+            "
+        ></p>
+
+
+        <label
+            style="
+                display:block;
+                font-weight:bold;
+                margin-bottom:8px;
+                color:#5a4030;
+            "
+        >
+            Sua nota
+        </label>
+
+
+        <select
+            id="avaliacaoNota"
+            style="
+                width:100%;
+                padding:12px;
+                border:1px solid #cbb69d;
+                border-radius:8px;
+                margin-bottom:18px;
+                font-size:15px;
+                background:#fff;
+            "
+        >
+
+            <option value="">
+                Selecione
+            </option>
+
+            <option value="5">
+                ★★★★★ - 5 estrelas
+            </option>
+
+            <option value="4">
+                ★★★★☆ - 4 estrelas
+            </option>
+
+            <option value="3">
+                ★★★☆☆ - 3 estrelas
+            </option>
+
+            <option value="2">
+                ★★☆☆☆ - 2 estrelas
+            </option>
+
+            <option value="1">
+                ★☆☆☆☆ - 1 estrela
+            </option>
+
+        </select>
+
+
+        <label
+            for="avaliacaoComentario"
+            style="
+                display:block;
+                font-weight:bold;
+                margin-bottom:8px;
+                color:#5a4030;
+            "
+        >
+            Conte como foi seu pedido
+        </label>
+
+
+        <textarea
+    id="avaliacaoComentario"
+    rows="4"
+    maxlength="150"
+    placeholder="Escreva sua avaliação..."
+    style="
+        width:100%;
+        box-sizing:border-box;
+        padding:12px;
+        border:1px solid #cbb69d;
+        border-radius:8px;
+        resize:vertical;
+        font-family:Arial, sans-serif;
+        font-size:15px;
+    "
+></textarea>
+
+<small
+    id="contadorAvaliacao"
+    style="
+        display:block;
+        text-align:right;
+        margin-top:5px;
+        color:#766255;
+    "
+>
+    0/150
+</small>
+
+
+        <p
+            id="avaliacaoMessage"
+            class="perfil-message"
+        ></p>
+
+
+        <div class="perfil-actions">
+
+            <button
+                type="button"
+                id="enviarAvaliacaoButton"
+                class="perfil-btn perfil-btn-primary"
+            >
+                Enviar avaliação
+            </button>
+
+
+            <button
+                type="button"
+                id="cancelarAvaliacaoButton"
+                class="perfil-btn perfil-btn-secondary"
+            >
+                Cancelar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="scripts/script.js"></script>
+    <script src="scripts/perfil.js"></script>
+
+</body>
+
+</html>

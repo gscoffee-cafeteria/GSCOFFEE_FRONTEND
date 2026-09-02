@@ -1,0 +1,19 @@
+VIDEO DO HERO — GS COFFEE
+
+Coloque nesta pasta um vídeo chamado:
+
+barista.mp4
+
+Exemplo de conteúdo:
+- pessoa preparando café
+- espresso sendo extraído
+- leite sendo vaporizado
+- barista preparando cappuccino
+
+O index.html já está configurado para usar:
+assets/videos/barista.mp4
+
+Enquanto o arquivo não existir, a Home usa automaticamente a imagem:
+assets/images/cafeflutuante1.png
+
+Prefira um vídeo MP4, horizontal, com boa qualidade e sem áudio.

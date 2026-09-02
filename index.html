@@ -1,0 +1,1688 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GS Coffee — cafés especiais, doces e bebidas com delivery.">
+    <title>GS Coffee | Café & Delivery</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/carrinho.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script defer src="scripts/script.js"></script>
+</head>
+
+<body>
+
+    <a href="#conteudo-principal" class="skip-link">
+    Pular para o conteúdo principal
+</a>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header-style">
+        <nav class="container-grid">
+
+            <a href="index.html" class="logo-link" aria-label="GS Coffee - Home">
+                <img src="assets/images/logo.png" alt="GS Coffee">
+            </a>
+
+            <button class="menu-mobile-btn" id="openMenu" aria-label="Abrir menu">
+                <i class="bi bi-list" aria-hidden="true"></i>
+            </button>
+
+            <ul class="menu-principal" id="menuMobile">
+                <li><a href="index.html#inicio">HOME</a></li>
+                <li><a href="cardapiocompleto.html">CARDÁPIO</a></li>
+                <li><a href="index.html#sobrenos">SOBRE NÓS</a></li>
+                <li><a href="index.html#avaliacoes">AVALIAÇÕES</a></li>
+                <li><a href="index.html#faleconosco">FALE CONOSCO</a></li>
+                <li id="adminMenuItem" style="display: none;"> 
+                    <a href="admin/dashboard.html">
+                        PAINEL ADMIN
+                    </a>
+                </li>
+            </ul>
+
+            <div class="header-icons">
+                <div id="userGreeting">
+                    <span id="loggedInUser"></span>
+                </div>
+
+                <i
+    id="userIcon"
+    class="bi bi-person"
+    title="Entrar"
+    role="button"
+    tabindex="0"
+    aria-label="Entrar ou acessar minha conta"
+></i>
+
+<i
+    id="cart-icon"
+    class="bi bi-cart4"
+    title="Meu carrinho"
+    role="button"
+    tabindex="0"
+    aria-label="Abrir meu carrinho"
+></i>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <main id="conteudo-principal">
+
+        <!-- ================= HERO ================= -->
+<section id="inicio" class="hero">
+
+    <div id="hero-media-container">
+
+        <video
+            id="hero-video"
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            style="display: none;"
+        ></video>
+
+        <img
+            id="hero-imagem"
+            class="hero-video"
+            src=""
+            alt="GS Coffee"
+            style="display: none;"
+        >
+
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content container-grid">
+
+        <span
+            id="hero-subtitulo"
+            class="hero-subtitle"
+        >
+            GS COFFEE
+        </span>
+
+        <h1 id="hero-titulo">
+            O sabor que<br>chega até você.
+        </h1>
+
+        <p id="hero-texto">
+            Cafés especiais, doces artesanais e bebidas preparadas
+            com carinho para você pedir onde estiver.
+        </p>
+
+        <a
+            href="cardapiocompleto.html"
+            class="btn-pedir"
+        >
+            PEDIR AGORA
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+
+    </div>
+
+</section>
+
+        <!-- ================= MAIS PEDIDOS ================= -->
+        <section id="cardapio" class="section-cardapio">
+
+            <div class="container-grid">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        Para pedir agora
+                    </span>
+
+                    <h1>Os mais pedidos</h1>
+
+                </div>
+
+
+                <section class="section-cardapio__cards">
+
+                    <svg
+                        id="seta-esquerda"
+                        viewBox="0 0 24 24"
+                        aria-label="Produtos anteriores"
+                    >
+                        <path
+                            d="M16 5l-8 7 8 7"
+                            fill="none"
+                            stroke="#603319"
+                            stroke-width="2"
+                        />
+                    </svg>
+
+                    <div
+                        id="card-container"
+                        class="carousel"
+                    ></div>
+
+                    <svg
+                        id="seta-direita"
+                        viewBox="0 0 24 24"
+                        aria-label="Próximos produtos"
+                    >
+                        <path
+                            d="M8 5l8 7-8 7"
+                            fill="none"
+                            stroke="#603319"
+                            stroke-width="2"
+                        />
+                    </svg>
+
+                </section>
+
+
+                <div style="text-align:center;margin-top:35px;">
+
+                    <a
+                        href="cardapiocompleto.html"
+                        class="btn-pedir"
+                        style="background:var(--marrom-600);"
+                    >
+                        VER CARDÁPIO COMPLETO
+                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SOBRE A GS COFFEE ================= -->
+        <section id="sobrenos" class="section-sobrenos">
+
+            <div class="container-grid">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        Nossa proposta
+                    </span>
+
+                    <h1>
+                        O café do seu jeito
+                    </h1>
+
+                    <p>
+                        A GS Coffee é uma cafeteria feita para todos os momentos. Venha aproveitar nossos cafés e sabores em nosso espaço ou, se preferir, faça seu pedido online.
+                    </p>
+
+                </div>
+
+
+                <div class="como-funciona">
+
+                    <article class="como-card">
+
+                        <div class="como-icon">
+                            <i class="bi bi-cup-hot" aria-hidden="true"></i>
+                        </div>
+
+                        <span>01</span>
+
+                        <h2>Escolha seu café</h2>
+
+                        <p>
+                            Explore nosso cardápio e encontre cafés,
+                            doces e bebidas para o seu momento.
+                        </p>
+
+                    </article>
+
+
+                    <article class="como-card">
+
+                        <div class="como-icon">
+                            <i class="bi bi-bag-check" aria-hidden="true"></i>
+                        </div>
+
+                        <span>02</span>
+
+                        <h2>Faça seu pedido</h2>
+
+                        <p>
+                            Adicione seus favoritos ao carrinho,
+                            informe o endereço e escolha a forma de pagamento.
+                        </p>
+
+                    </article>
+
+
+                    <article class="como-card">
+
+                        <div class="como-icon">
+                            <i class="bi bi-scooter" aria-hidden="true"></i>
+                        </div>
+
+                        <span>03</span>
+
+                        <h2>Receba em casa</h2>
+
+                        <p>
+                            Acompanhe o preparo e a entrega até o pedido
+                            chegar quentinho e pronto para você.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <div class="sobre-destaque">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            Feito para delivery
+                        </span>
+
+                        <h2>
+                            Qualidade em cada etapa
+                        </h2>
+
+                        <p>
+                            Trabalhamos para que a experiência digital seja
+                            tão cuidadosa quanto o café. Produtos selecionados,
+                            preparo com atenção, embalagem pensada para transporte
+                            e acompanhamento do pedido em um só lugar.
+                        </p>
+
+                    </div>
+
+
+                    <div class="sobre-destaque-badges">
+
+                        <span>
+                            <i class="bi bi-check-circle" aria-hidden="true"></i>
+                            Cardápio atualizado
+                        </span>
+
+                        <span>
+                            <i class="bi bi-check-circle" aria-hidden="true"></i>
+                            Pedido acompanhado
+                        </span>
+
+                        <span>
+                            <i class="bi bi-check-circle" aria-hidden="true"></i>
+                            Entrega na sua porta
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AVALIAÇÕES ================= -->
+        <section id="avaliacoes" class="section-avaliacoes">
+
+            <div class="container-grid">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        Quem já pediu
+                    </span>
+
+                    <h1>
+                        O que nossos clientes dizem
+                    </h1>
+
+                    <p>
+                        Algumas experiências de quem já provou
+                        GS Coffee.
+                    </p>
+
+                </div>
+
+
+                <div class="reviews-carousel-wrap">
+
+                    <button
+                        class="review-arrow review-prev"
+                        id="review-prev"
+                        aria-label="Avaliações anteriores"
+                    >
+                        <i class="bi bi-chevron-left"  aria-hidden="true"></i>
+                    </button>
+
+
+                    <div
+                        class="reviews-carousel"
+                        id="reviews-carousel"
+                    >
+
+                        <div
+                            class="reviews-track"
+                            id="reviews-track"
+                        >
+
+                            <article class="review-card">
+
+                                <div class="review-stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    “O cappuccino chegou muito bem embalado e
+                                    ainda estava quentinho. Com certeza vou pedir novamente!”
+                                </p>
+
+                                <strong>Mariana S.</strong>
+
+                                <small>
+                                    Pedido delivery
+                                </small>
+
+                            </article>
+
+
+                            <article class="review-card">
+
+                                <div class="review-stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    “Amei os doces. A apresentação é linda,
+                                    o sabor é ainda melhor e o pedido chegou rápido.”
+                                </p>
+
+                                <strong>João R.</strong>
+
+                                <small>
+                                    Pedido delivery
+                                </small>
+
+                            </article>
+
+
+                            <article class="review-card">
+
+                                <div class="review-stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    “O café expresso virou meu pedido de toda semana.
+                                    Prático, gostoso e muito bem preparado.”
+                                </p>
+
+                                <strong>Camila M.</strong>
+
+                                <small>
+                                    Pedido delivery
+                                </small>
+
+                            </article>
+
+
+                            <article class="review-card">
+
+                                <div class="review-stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    “Gostei muito de acompanhar o pedido.
+                                    Dá uma sensação de segurança saber
+                                    em que etapa ele está.”
+                                </p>
+
+                                <strong>Lucas P.</strong>
+
+                                <small>
+                                    Pedido delivery
+                                </small>
+
+                            </article>
+
+
+                            <article class="review-card">
+
+                                <div class="review-stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    “O latte caramelizado é maravilhoso.
+                                    Pedi no fim da tarde e chegou tudo certinho.”
+                                </p>
+
+                                <strong>Ana Clara</strong>
+
+                                <small>
+                                    Pedido delivery
+                                </small>
+
+                            </article>
+
+
+                            <article class="review-card">
+
+                                <div class="review-stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    “Site fácil de usar, checkout simples
+                                    e o café estava delicioso. Vou virar cliente.”
+                                </p>
+
+                                <strong>Rafael T.</strong>
+
+                                <small>
+                                    Pedido delivery
+                                </small>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="review-arrow review-next"
+                        id="review-next"
+                        aria-label="Próximas avaliações"
+                    >
+                        <i class="bi bi-chevron-right"  aria-hidden="true"></i>
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="review-dots"
+                    id="review-dots"
+                ></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+<footer
+    id="faleconosco"
+    class="footer-style"
+>
+
+    <section class="footer-style_1 container-grid">
+
+        <article>
+
+            <img
+                id="logo"
+                src="assets/images/logo.png"
+                alt="GS Coffee"
+            >
+
+            <h1>
+                Fale conosco
+            </h1>
+
+            <p>
+                Ficou com alguma dúvida sobre seu pedido?
+                Entre em contato com a nossa equipe.
+            </p>
+
+        </article>
+
+
+        <div>
+
+            <h1>
+                Formas de pagamento
+            </h1>
+
+            <p id="formas-pagamento-texto">
+                PIX, Cartão e Dinheiro
+            </p>
+
+            <img
+                id="formas"
+                src="assets/images/forma-pagamentos 1.png"
+                alt="Formas de pagamento"
+            >
+
+        </div>
+
+    </section>
+
+
+    <section class="footer-style_2 container-grid">
+
+        <article>
+
+            <h1>
+                Contatos
+            </h1>
+
+            <div id="contatos-dinamicos">
+                <p>Carregando contatos...</p>
+            </div>
+
+        </article>
+
+
+        <article class="onde-estamos">
+
+            <h1>
+                Onde estamos
+            </h1>
+
+            <div id="enderecos-dinamicos">
+
+                <p>
+                    Carregando unidades...
+                </p>
+
+            </div>
+
+
+            <div class="mapa-unidade">
+
+                <a
+                    href="https://maps.app.goo.gl/T8367q2CUFWfSJFF7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <iframe
+                        src="https://www.google.com/maps?q=GS%20COFFEE%20CAFETERIA%20Santo%20Andr%C3%A9&output=embed"
+                        title="Localização da GS Coffee no Google Maps"
+                        width="100%"
+                        height="180"
+                        style="border:0; pointer-events:none;"
+                        loading="lazy"
+                    ></iframe>
+
+                </a>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <section class="footer-style_3">
+
+        <p>
+            &copy; Todos os direitos reservados —
+            GS Coffee 2026
+        </p>
+
+    </section>
+
+</footer>
+
+
+    <!-- ================= LOGIN / CADASTRO ================= -->
+    <section
+    id="loginModal"
+    class="modal-login"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-login"
+>
+
+        <div class="login-container">
+
+            <button
+                type="button"
+                class="close login-close"
+                id="close-login"
+                aria-label="Fechar login"
+            >
+                &times;
+            </button>
+
+
+            <figure>
+
+                <img
+                    class="logoLogin"
+                    src="./assets/images/logo.png"
+                    alt="GS Coffee"
+                >
+
+            </figure>
+
+
+            <div class="login-intro">
+
+                <span class="section-kicker">
+                    Minha conta
+                </span>
+
+                <h2 id="titulo-login">
+    Bem-vindo à GS Coffee
+</h2>
+
+                <p>
+                    Entre para finalizar pedidos
+                    e acompanhar suas entregas.
+                </p>
+
+            </div>
+
+
+            <div class="form-container">
+
+                <h3>
+                    Entrar
+                </h3>
+
+                <form
+                    id="form-login"
+                    action="#"
+                    method="POST"
+                    class="form-login"
+                >
+
+                    <label for="login-email">
+    E-mail
+</label>
+
+<input
+    type="email"
+    placeholder="Digite seu email"
+    required
+    class="inputlc"
+    id="login-email"
+    autocomplete="email"
+>
+
+<label for="login-password">
+    Senha
+</label>
+
+<input
+    type="password"
+    placeholder="Digite sua senha"
+    required
+    class="inputlc"
+    id="login-password"
+    autocomplete="current-password"
+>
+
+                    <button type="submit">
+                        Entrar
+                    </button>
+                    
+                    <button
+                        type="button"
+                        id="forgot-password-button"
+                        style="
+                            margin-top: 10px;
+                            background: transparent;
+                            color: var(--marrom-600);
+                            border: none;
+                            cursor: pointer;
+                            font-weight: 700;
+                            padding: 5px;
+                        "
+                    >
+                        Esqueci minha senha
+                    </button>
+                    
+                    <p
+    class="auth-message"
+    id="login-message"
+    aria-live="polite"
+></p>
+
+                </form>
+
+            </div>
+
+
+            <div class="auth-divider">
+                <span>ou</span>
+            </div>
+
+
+            <div class="form-container">
+
+                <h3>
+                    Crie sua conta
+                </h3>
+
+                <form
+                    id="form-signup"
+                    action="#"
+                    method="POST"
+                    class="form-signup"
+                >
+
+                    <label for="signup-name">Nome</label>
+<input
+    type="text"
+    placeholder="Seu nome"
+    required
+    class="inputlc"
+    id="signup-name"
+    autocomplete="name"
+>
+
+<label for="signup-email">E-mail</label>
+<input
+    type="email"
+    placeholder="Seu email"
+    required
+    class="inputlc"
+    id="signup-email"
+    autocomplete="email"
+>
+
+<label for="signup-phone">Telefone</label>
+<input
+    type="tel"
+    placeholder="Seu telefone"
+    required
+    class="inputlc"
+    id="signup-phone"
+    autocomplete="tel"
+>
+
+<label for="signup-password">Senha</label>
+<input
+    type="password"
+    placeholder="Crie uma senha"
+    required
+    minlength="6"
+    class="inputlc"
+    id="signup-password"
+    autocomplete="new-password"
+>
+
+<label for="signup-password-confirm">
+    Confirmar senha
+</label>
+<input
+    type="password"
+    placeholder="Confirme sua senha"
+    required
+    minlength="6"
+    class="inputlc"
+    id="signup-password-confirm"
+    autocomplete="new-password"
+>
+
+                    <button type="submit">
+                        Criar conta
+                    </button>
+
+                    <p
+                        class="auth-message"
+                        id="signup-message"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ================= ESQUECI MINHA SENHA ================= -->
+
+<section
+    id="forgotPasswordModal"
+    class="modal-login"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-recuperar-senha"
+>
+
+<div class="login-container">
+
+    <button
+        type="button"
+        class="close login-close"
+        id="close-forgot-password"
+        aria-label="Fechar recuperação de senha"
+    >
+        &times;
+    </button>
+
+
+    <figure>
+
+        <img
+            class="logoLogin"
+            src="./assets/images/logo.png"
+            alt="GS Coffee"
+        >
+
+    </figure>
+
+
+    <div class="login-intro">
+
+        <span class="section-kicker">
+            Recuperar conta
+        </span>
+
+        <h2 id="titulo-recuperar-senha">
+    Esqueci minha senha
+</h2>
+
+        <p>
+            Informe seu e-mail para gerar
+            um código de recuperação.
+        </p>
+
+    </div>
+
+
+    <!-- ================= ETAPA 1 ================= -->
+
+    <div
+        class="form-container"
+        id="forgot-step-email"
+    >
+
+        <h3>
+            Informe seu e-mail
+        </h3>
+
+        <label for="forgot-email">
+    E-mail
+</label>
+
+        <form id="forgot-email-form">
+
+            <input
+                type="email"
+                id="forgot-email"
+                class="inputlc"
+                placeholder="Digite seu e-mail"
+                autocomplete="email"
+                required
+            >
+
+            <button type="submit">
+                Gerar código
+            </button>
+
+            <p
+                class="auth-message"
+                id="forgot-email-message"
+                aria-live="polite"
+            ></p>
+
+        </form>
+
+    </div>
+
+
+    <!-- ================= ETAPA 2 ================= -->
+
+    <div
+        class="form-container"
+        id="forgot-step-reset"
+        style="display:none;"
+    >
+
+        <h3>
+            Redefinir senha
+        </h3>
+
+
+        <div
+    id="recovery-code-box"
+    style="
+        display:none;
+        margin-bottom:15px;
+        padding:12px;
+        border-radius:8px;
+        background:#f6ebdd;
+        color:#603319;
+        text-align:center;
+    "
+>
+
+    Enviamos um código de recuperação para o seu e-mail.
+
+</div>
+
+
+        <form id="forgot-reset-form">
+
+            <label for="forgot-code">
+    Código de recuperação
+</label>
+
+            <input
+                type="text"
+                id="forgot-code"
+                class="inputlc"
+                placeholder="Digite o código"
+                maxlength="6"
+                required
+            >
+
+            <label for="forgot-new-password">
+    Nova senha
+</label>
+
+            <input
+                type="password"
+                id="forgot-new-password"
+                class="inputlc"
+                placeholder="Nova senha"
+                minlength="6"
+                autocomplete="new-password"
+                required
+            >
+
+            <label for="forgot-confirm-password">
+    Confirmar nova senha
+</label>
+
+
+            <input
+                type="password"
+                id="forgot-confirm-password"
+                class="inputlc"
+                placeholder="Confirme a nova senha"
+                minlength="6"
+                autocomplete="new-password"
+                required
+            >
+
+
+            <button type="submit">
+                Redefinir senha
+            </button>
+
+
+            <p
+    class="auth-message"
+    id="forgot-reset-message"
+    aria-live="polite"
+></p>
+
+        </form>
+
+    </div>
+
+
+    <div
+        style="
+            text-align:center;
+            margin-top:20px;
+        "
+    >
+
+        <button
+            type="button"
+            id="back-to-login"
+            style="
+                background:transparent;
+                border:none;
+                color:var(--marrom-600);
+                font-weight:700;
+                cursor:pointer;
+            "
+        >
+            ← Voltar para o login
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+    <!-- ================= CARRINHO ================= -->
+    <section
+    id="cart"
+    class="modal-carrinho"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-carrinho"
+>
+
+        <button
+            id="close-cart"
+            aria-label="Fechar carrinho"
+        >
+            ×
+        </button>
+
+
+        <section class="menu">
+
+            <h1 id="titulo-carrinho">
+    Meu Pedido
+</h1>
+
+            <i class="bi bi-cart4"  aria-hidden="true"></i>
+
+        </section>
+
+
+        <section class="total">
+
+            <div class="table2">
+
+                <table id="carrinho-table">
+                    <tbody></tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <div class="button3">
+
+            <button
+                class="cancelar"
+                id="cancel-button"
+            >
+                Limpar
+            </button>
+
+            <button
+                class="finalizar"
+                id="finalizar-compra-button"
+            >
+                Continuar
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CHECKOUT ================= -->
+    <div
+    id="finalizarModal"
+    class="modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-checkout"
+>
+
+        <div class="modal-content checkout-content">
+
+            <button
+                type="button"
+                class="close checkout-close"
+                aria-label="Fechar checkout"
+            >
+                &times;
+            </button>
+
+
+            <section class="finalizar-cadastro">
+
+                <span class="checkout-kicker">
+                    Última etapa
+                </span>
+
+                <h1 id="titulo-checkout">
+    Finalizar pedido
+</h1>
+
+
+                <div class="dados checkout-summary-user">
+
+                    <div>
+
+                        <h3>
+                            Cliente
+                        </h3>
+
+                        <p id="checkout-user">
+                            Faça login para continuar
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Tipo de pedido
+                        </h3>
+
+                        <p>
+                            Delivery
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="adress">
+
+                    <strong>
+                        Endereço de entrega
+                    </strong>
+
+                    <p>
+                        Informe onde deseja receber seu pedido.
+                    </p>
+
+                </div>
+
+
+                <div class="delivery-form">
+
+                    <label>
+                        Nome
+
+                        <input
+                            id="delivery-name"
+                            type="text"
+                            placeholder="Seu nome"
+                            autocomplete="name"
+                            required
+                        >
+                    </label>
+
+
+                    <label>
+                        Telefone
+
+                        <input
+                            id="delivery-phone"
+                            type="tel"
+                            placeholder="(11) 99999-9999"
+                            autocomplete="tel"
+                            required
+                        >
+                    </label>
+
+
+                    <div class="form-group">
+
+    <label for="saved-address">
+        Endereço salvo
+    </label>
+
+    <select id="saved-address">
+
+        <option value="">
+            Selecione um endereço
+        </option>
+
+        <option value="novo">
+            + Usar outro endereço
+        </option>
+
+    </select>
+
+</div>
+
+                    <label>
+                        CEP
+
+                        <input
+                            id="delivery-cep"
+                            type="text"
+                            placeholder="00000-000"
+                            autocomplete="postal-code"
+                            required
+                        >
+                    </label>
+
+
+                    <label>
+                        Número
+
+                        <input
+                            id="delivery-number"
+                            type="text"
+                            placeholder="123"
+                            required
+                        >
+                    </label>
+
+
+                    <label class="full">
+
+                        Rua / Avenida
+
+                        <input
+                            id="delivery-street"
+                            type="text"
+                            placeholder="Nome da rua"
+                            autocomplete="street-address"
+                            required
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Bairro
+
+                        <input
+                            id="delivery-neighborhood"
+                            type="text"
+                            placeholder="Seu bairro"
+                            required
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Complemento
+
+                        <input
+                            id="delivery-complement"
+                            type="text"
+                            placeholder="Apto, bloco..."
+                        >
+
+                    </label>
+
+
+                    <label class="full">
+
+                        Forma de pagamento
+
+                        <select id="delivery-payment">
+
+    <option value="PIX">
+        PIX
+    </option>
+
+    <option value="CARTAO">
+        Cartão
+    </option>
+
+    <option value="DINHEIRO">
+        Dinheiro
+    </option>
+
+</select>
+
+<!-- TIPO DO CARTÃO -->
+
+<div
+    id="card-options"
+    style="display: none; margin-top: 10px;"
+>
+
+    <label for="card-type">
+        Tipo do cartão
+    </label>
+
+    <select id="card-type">
+
+        <option value="CREDITO">
+            Crédito
+        </option>
+
+        <option value="DEBITO">
+            Débito
+        </option>
+
+    </select>
+
+</div>
+
+<!-- OPÇÕES EXTRAS DO PAGAMENTO -->
+
+<div
+    id="payment-extra"
+    style="display: none; margin-top: 12px;"
+>
+
+    <!-- DINHEIRO -->
+
+    <div
+        id="cash-options"
+        style="display: none;"
+    >
+
+        <label for="needs-change">
+            Precisa de troco?
+        </label>
+
+        <select id="needs-change">
+
+            <option value="NAO">
+                Não
+            </option>
+
+            <option value="SIM">
+                Sim
+            </option>
+
+        </select>
+
+
+        <div
+            id="change-value-container"
+            style="display: none; margin-top: 10px;"
+        >
+
+            <label for="change-value">
+                Troco para quanto?
+            </label>
+
+            <input
+                type="number"
+                id="change-value"
+                min="0"
+                step="0.01"
+                placeholder="Ex: 50,00"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- PIX -->
+
+    <div
+        id="pix-options"
+        style="display: none;"
+    >
+
+        <p>
+            Pagamento via PIX.
+        </p>
+
+    </div>
+
+</div>
+
+                    </label>
+
+                </div>
+
+
+                <div
+                    class="checkout-order-preview"
+                    id="checkout-order-preview"
+                ></div>
+
+
+                <div class="enviar">
+
+                    <span id="checkout-total">
+                        Total: R$ 0,00
+                    </span>
+
+                    <button
+                        id="confirmar-pedido-button"
+                        type="button"
+                    >
+                        <i class="bi bi-check"  aria-hidden="true"></i>
+                        <span>Confirmar pedido</span>
+                    </button>
+
+                </div>
+
+
+                <p
+                    class="auth-message"
+                    id="order-message"
+                    aria-live="polite"
+                ></p>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ACOMPANHAR PEDIDO ================= -->
+    <div
+    id="pedidoModal"
+    class="modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-acompanhar-pedido"
+>
+
+        <div class="modal-content tracking-content">
+
+            <button
+                type="button"
+                class="close"
+                id="close-pedido"
+                aria-label="Fechar acompanhamento"
+            >
+                &times;
+            </button>
+
+
+            <div class="tracking-header">
+
+                <span class="checkout-kicker">
+                    Pedido confirmado
+                </span>
+
+                <h1 id="titulo-acompanhar-pedido">
+    Acompanhe seu pedido
+</h1>
+
+                <p>
+                    Pedido
+                    <strong id="tracking-order-number">
+                        #---
+                    </strong>
+                </p>
+
+            </div>
+
+
+            <div
+                class="order-receipt"
+                id="order-receipt"
+            ></div>
+
+
+            <div
+                class="tracking-status"
+                id="tracking-status"
+            ></div>
+
+
+            <div
+                class="tracking-steps"
+                id="tracking-steps"
+            >
+
+                <div
+                    class="tracking-step"
+                    data-status="recebido"
+                >
+
+                    <span class="tracking-dot">
+                        <i class="bi bi-check2"  aria-hidden="true"></i>
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Pedido recebido
+                        </strong>
+
+                        <small>
+                            Seu pedido foi confirmado.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="tracking-line"></div>
+
+
+                <div
+                    class="tracking-step"
+                    data-status="preparando"
+                >
+
+                    <span class="tracking-dot">
+                        <i class="bi bi-cup-hot"  aria-hidden="true"></i>
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Em preparo
+                        </strong>
+
+                        <small>
+                            Estamos preparando seus produtos.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="tracking-line"></div>
+
+
+                <div
+                    class="tracking-step"
+                    data-status="saiu_entrega"
+                >
+
+                    <span class="tracking-dot">
+                        <i class="bi bi-scooter"  aria-hidden="true"></i>
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Saiu para entrega
+                        </strong>
+
+                        <small>
+                            Seu pedido está a caminho.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="tracking-line"></div>
+
+
+                <div
+                    class="tracking-step"
+                    data-status="entregue"
+                >
+
+                    <span class="tracking-dot">
+                        <i class="bi bi-house-check"  aria-hidden="true"></i>
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Pedido entregue
+                        </strong>
+
+                        <small>
+                            Bom café! ☕
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CONFIRMAR CANCELAMENTO ================= -->
+    <div
+    id="confirmarCancelamento"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-limpar-carrinho"
+>
+
+        <div class="modal-content">
+
+            <h3 id="titulo-limpar-carrinho">
+    Limpar pedido?
+</h3>
+
+            <p>
+                Deseja remover todos os itens do carrinho?
+            </p>
+
+
+            <div class="botoes-confirmacao">
+
+                <button
+                    id="sim-cancelar"
+                    class="btn-sim"
+                >
+                    Sim
+                </button>
+
+                <button
+                    id="nao-cancelar"
+                    class="btn-nao"
+                >
+                    Não
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+```

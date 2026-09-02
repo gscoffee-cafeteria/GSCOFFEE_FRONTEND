@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        GS Coffee | Pedidos
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="styles/admin.css"
+    >
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6ebdd;
+            color: #3a2014;
+            margin: 0;
+        }
+
+        .orders {
+            width: min(1100px, calc(100% - 30px));
+            margin: 40px auto;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back {
+            color: #603319;
+        }
+
+        .order {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 18px 0;
+            box-shadow:
+                0 8px 25px #3a201414;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .items {
+            margin: 15px 0;
+            padding: 12px;
+            background: #fbf7f2;
+            border-radius: 10px;
+        }
+
+        .status {
+            padding: 10px;
+            border: 1px solid #d9c5b4;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 8px;
+            background: #603319;
+            color: #fff;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .muted {
+            color: #766255;
+            font-size: 13px;
+        }
+
+        .error {
+            color: #a13f32;
+        }
+
+        .success {
+    color: #34723e;
+    font-size: 14px;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="orders">
+
+
+        <div class="top">
+
+
+            <div>
+
+                <h1>
+                    Pedidos GS Coffee
+                </h1>
+
+                <p class="muted">
+                    Atualize o andamento dos pedidos dos clientes.
+                </p>
+
+            </div>
+
+
+            <a
+                class="back"
+                href="dashboard.html"
+            >
+                ← Voltar para o painel
+            </a>
+
+
+        </div>
+
+
+        <div id="message"></div>
+
+
+        <section id="orders-list"></section>
+
+
+    </main>
+
+
+    <script src="scripts/pedidos.js"></script>
+
+
+</body>
+
+</html>

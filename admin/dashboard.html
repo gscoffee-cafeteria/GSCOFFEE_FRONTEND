@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GS Coffee | Painel Administrativo</title>
+
+    <link rel="stylesheet" href="styles/admin.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6ebdd;
+            color: #3a2014;
+            margin: 0;
+            display: block;
+        }
+
+        .panel {
+            width: min(1000px, calc(100% - 30px));
+            margin: 60px auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px #3a201414;
+        }
+
+        .card h1 {
+            margin-bottom: 10px;
+        }
+
+        .muted {
+            color: #766255;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .action {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            padding: 24px;
+
+            border-radius: 14px;
+
+            background: #603319;
+            color: #fff;
+
+            text-decoration: none;
+
+            transition: 0.2s;
+        }
+
+        .action:hover {
+            background: #b87945;
+            transform: translateY(-2px);
+        }
+
+        .action strong {
+            font-size: 18px;
+        }
+
+        .action span {
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        .action.cafeteria {
+            background: #3a2014;
+        }
+
+        @media(max-width: 650px) {
+            .actions {
+                grid-template-columns: 1fr;
+            }
+
+            .panel {
+                margin: 25px auto;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="panel">
+
+        <section class="card">
+
+            <h1>GS Coffee — Painel Administrativo</h1>
+
+            <p class="muted">
+                Gerencie as principais informações e funcionalidades da cafeteria.
+            </p>
+
+
+            <div class="actions">
+
+                <a class="action" href="pedidos.html">
+                    <strong>📦 Pedidos</strong>
+                    <span>
+                        Visualizar pedidos e atualizar o andamento das entregas.
+                    </span>
+                </a>
+
+
+                <a class="action" href="produtos.html">
+                    <strong>☕ Produtos</strong>
+                    <span>
+    Cadastrar, editar e gerenciar produtos, preços e disponibilidade.
+</span>
+                </a>
+
+
+                <a class="action" href="categorias.html">
+                    <strong>📋 Categorias</strong>
+                    <span>
+                        Organizar e administrar as categorias do cardápio.
+                    </span>
+                </a>
+
+                <a class="action" href="avaliacoes.html">
+                    <strong>⭐ Avaliações</strong>
+                    <span>
+                        Cadastrar e gerenciar as avaliações exibidas no site.
+                    </span>
+                </a>
+
+                <a class="action" href="configuracoes.html">
+                    <strong>⚙️ Configurações da cafeteria</strong>
+                    <span>
+    Alterar textos, contatos, horários, endereços e informações do site.
+</span>
+                </a>
+
+
+                <a class="action cafeteria" href="../index.html">
+                    <strong>☕ Ver cafeteria</strong>
+                    <span>
+                        Voltar para a página principal da GS Coffee.
+                    </span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

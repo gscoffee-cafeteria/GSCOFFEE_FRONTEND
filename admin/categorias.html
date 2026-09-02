@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GS Coffee | Categorias</title>
+
+    <link rel="stylesheet" href="styles/admin.css">
+
+    <style>
+
+        body {
+            display: block;
+            margin: 0;
+            background: #f6ebdd;
+            color: #3a2014;
+            font-family: Arial, sans-serif;
+        }
+
+        .page {
+            width: min(900px, calc(100% - 30px));
+            margin: 40px auto;
+        }
+
+        .topo {
+            margin-bottom: 25px;
+        }
+
+        .topo a {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #603319;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .topo h1 {
+            margin-bottom: 8px;
+        }
+
+        .topo p {
+            color: #766255;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(58, 32, 20, 0.08);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            color: #603319;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .field label {
+            font-weight: bold;
+            color: #5a4030;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbb69d;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #603319;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #b87945;
+        }
+
+        .btn-edit {
+            background: #b87945;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #a63f35;
+            color: white;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .success {
+            color: #34723e;
+        }
+
+        .error {
+            color: #b33a3a;
+        }
+
+        .categories-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            padding: 16px;
+
+            border: 1px solid #e6d4c1;
+            border-radius: 12px;
+
+            background: #fffaf5;
+        }
+
+        .category-info strong {
+            font-size: 17px;
+            color: #603319;
+        }
+
+        .category-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* =====================================================
+   MODAL EXCLUIR CATEGORIA
+   ===================================================== */
+
+.modal-excluir {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-excluir.ativo {
+    display: flex;
+}
+
+.modal-excluir-conteudo {
+    width: 360px;
+    max-width: 90%;
+    background: #fff;
+    padding: 28px;
+    border-radius: 14px;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+.modal-excluir-conteudo h3 {
+    margin: 0 0 10px;
+}
+
+.modal-excluir-conteudo p {
+    margin: 0;
+}
+
+.modal-excluir-acoes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.btn-cancelar,
+.btn-confirmar-exclusao {
+    width: auto;
+    padding: 10px 22px;
+}
+
+.btn-cancelar {
+    background: #777;
+    color: #fff;
+}
+
+.btn-cancelar:hover {
+    background: #555;
+}
+
+.btn-confirmar-exclusao {
+    background: #9b2c2c;
+    color: #fff;
+}
+
+.btn-confirmar-exclusao:hover {
+    background: #c0392b;
+}
+
+        @media(max-width: 650px) {
+
+            .category-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <main class="page">
+
+        <div class="topo">
+
+            <a href="dashboard.html">
+                ← Voltar para o painel
+            </a>
+
+            <h1>
+                Gerenciar categorias
+            </h1>
+
+            <p>
+                Cadastre, edite e organize as categorias do cardápio.
+            </p>
+
+        </div>
+
+
+        <section class="card">
+
+            <h2 id="form-title">
+                Cadastrar categoria
+            </h2>
+
+            <form id="categoriaForm">
+
+                <input
+                    type="hidden"
+                    id="categoriaId"
+                >
+
+                <div class="field">
+
+                    <label for="nome">
+                        Nome da categoria
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Ex.: Cafés"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="salvarCategoria"
+                    >
+                        Salvar categoria
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn"
+                        id="cancelarEdicao"
+                        style="display:none;"
+                    >
+                        Cancelar edição
+                    </button>
+
+                </div>
+
+                <p
+                    id="categoriaMessage"
+                    class="message"
+                ></p>
+
+            </form>
+
+        </section>
+
+
+        <section class="card">
+
+            <h2>
+                Categorias cadastradas
+            </h2>
+
+            <div
+                id="categoriesList"
+                class="categories-list"
+            ></div>
+
+        </section>
+
+    </main>
+
+    <div id="modalExcluirCategoria" class="modal-excluir">
+
+    <div class="modal-excluir-conteudo">
+
+        <h3>Excluir categoria</h3>
+
+        <p>
+            Tem certeza que deseja excluir esta categoria?
+        </p>
+
+        <div class="modal-excluir-acoes">
+
+            <button
+                type="button"
+                id="cancelarExclusaoCategoria"
+                class="btn btn-cancelar"
+            >
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                id="confirmarExclusaoCategoria"
+                class="btn btn-confirmar-exclusao"
+            >
+                Excluir
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="scripts/categorias.js"></script>
+
+</body>
+
+</html>
